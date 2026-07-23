@@ -39,7 +39,7 @@ export default function QuestionForm() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [category, setCategory] = useState<string | null>("");
   const [difficulty, setDifficulty] = useState<string | null>("");
-  const [amount, setAmount] = useState("");
+  const [amount, setAmount] = useState<number | "">("");
   const [type, setType] = useState<string | null>("");
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -201,7 +201,10 @@ export default function QuestionForm() {
                     min={1}
                     max={50}
                     value={amount}
-                    onChange={(e) => setAmount(Number(e.target.value))}
+                    onChange={(e) => {
+                      const val = e.target.value;
+                      setAmount(val === "" ? "" : Number(val));
+                    }}
                     placeholder="Enter number of questions"
                   />
                 </div>
