@@ -12,12 +12,16 @@ import {
 
 import { Button } from "@/components/ui/button";
 
+import { buttonVariants } from "@/components/ui/button";
+
 export function ThemeToggle() {
   const { setTheme } = useTheme();
 
   return (
     <DropdownMenu>
-      <DropdownMenuTrigger asChild>
+      <DropdownMenuTrigger
+        className={buttonVariants({ variant: "outline", size: "icon" })}
+      >
         <Button variant="outline" size="icon">
           <Sun className="h-5 w-5 dark:hidden" />
           <Moon className="hidden h-5 w-5 dark:block" />
